@@ -1,0 +1,4 @@
+---
+roles:
+  - name: rarrais.ros2
+    src: https://github.com/vadimkholodilo/ansible-role-ros2

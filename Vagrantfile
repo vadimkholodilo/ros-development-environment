@@ -73,5 +73,7 @@ Vagrant.configure("2") do |config|
    config.vm.provision "shell", inline: <<-SHELL
      apt update
      apt install -y ansible git
+     cd /vagrant_scripts
+     ansible-galaxy role install -r requirements.yml
    SHELL
 end
