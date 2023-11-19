@@ -42,4 +42,10 @@ vagrant ssh-config
 ```
 
 This command will output the SSH configuration details. You can add these details to your SSH configuration file, which is typically located at `~/.ssh/config`.
-```
+
+## Cleanup
+
+If you want to remove this development environment, you can do so by running the following command:
+
+```bash
+vagrant destroy
