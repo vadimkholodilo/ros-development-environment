@@ -70,12 +70,12 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
-   config.vm.provision "shell", inline: <<-SHELL
-     apt update
-     apt install -y curl git
+   config.vm.provision "shell", privileged: false, inline: <<-SHELL
+     sudo apt update
+     sudo apt install -y curl git
      curl 'https://raw.githubusercontent.com/Interbotix/interbotix_ros_manipulators/main/interbotix_ros_xsarms/install/amd64/xsarm_amd64_install.sh' > xsarm_amd64_install.sh
-     chmod +x xsarm_amd64_install.sh
+     sudo chmod +x xsarm_amd64_install.sh
      ./xsarm_amd64_install.sh -d humble -n
-     echo "source /opt/ros/humble/setup.bash" >> /home/vagrant/.bashrc
+     echo "source /home/vagrant/interbotix_ws/install/setup.bash" >> /home/vagrant/.bashrc
    SHELL
 end
