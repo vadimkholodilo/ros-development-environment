@@ -43,7 +43,7 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-   config.vm.synced_folder "./scripts", "/vagrant_scripts"
+   #config.vm.synced_folder "./scripts", "/vagrant_scripts"
 
   # Disable the default share of the current code directory. Doing this
   # provides improved isolation between the vagrant box and your host
@@ -72,8 +72,10 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
    config.vm.provision "shell", inline: <<-SHELL
      apt update
-     apt install -y ansible git
-     cd /vagrant_scripts
-     ansible-galaxy role install -r requirements.yml
+     apt install -y curl git
+     curl 'https://raw.githubusercontent.com/Interbotix/interbotix_ros_manipulators/main/interbotix_ros_xsarms/install/amd64/xsarm_amd64_install.sh' > xsarm_amd64_install.sh
+     chmod +x xsarm_amd64_install.sh
+     ./xsarm_amd64_install.sh -d humble -n
+     echo "source /opt/ros/humble/setup.bash" >> /home/vagrant/.bashrc
    SHELL
 end

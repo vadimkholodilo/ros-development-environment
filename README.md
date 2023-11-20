@@ -1,7 +1,8 @@
 # ros-development-environment
 
 This repository provides a development environment for the Robotic Operating System (ROS). More information about ROS can be found at [ros.org](https://ros.org).
-
+It also includes Introbotix packages to interact with their robots.
+You can find more information about their robots at [www.trossenrobotics.com](https://www.trossenrobotics.com/m/interbotix)
 ## Prerequisites
 
 Before you get started, make sure you have the following software installed on your machine:
