@@ -43,7 +43,7 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-   #config.vm.synced_folder "./scripts", "/vagrant_scripts"
+   config.vm.synced_folder "./data/scripts", "/vagrant_scripts"
 
   # Disable the default share of the current code directory. Doing this
   # provides improved isolation between the vagrant box and your host
@@ -71,11 +71,7 @@ Vagrant.configure("2") do |config|
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
    config.vm.provision "shell", privileged: false, inline: <<-SHELL
-     sudo apt update
-     sudo apt install -y curl git
-     curl 'https://raw.githubusercontent.com/Interbotix/interbotix_ros_manipulators/main/interbotix_ros_xsarms/install/amd64/xsarm_amd64_install.sh' > xsarm_amd64_install.sh
-     sudo chmod +x xsarm_amd64_install.sh
-     ./xsarm_amd64_install.sh -d humble -n
-     echo "source /home/vagrant/interbotix_ws/install/setup.bash" >> /home/vagrant/.bashrc
+   cd /vagrant_scripts
+   sudo chmod +x ./install.sh && ./install.sh
    SHELL
 end
